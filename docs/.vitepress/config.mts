@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress"
 
 export default defineConfig({
+  base: "/avalanche-docs/",
   lang: "en-US",
   title: "Avalanche Docs",
   description:
@@ -8,7 +9,7 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   themeConfig: {
-    logo: "/avalanche-mark.svg",
+    logo: "/avalanche-docs/avalanche-mark.svg",
     siteTitle: "Avalanche Docs",
     nav: [
       { text: "Home", link: "/" },
