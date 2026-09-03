@@ -174,8 +174,8 @@ attack. A CAIDA entry is a hint, not a guarantee.
 
 ## Related pages
 
-- [Infrastructure overview](overview.md) — the three managed pools.
-- [Proxy Pipeline](proxies.md) — the HTTP and SOCKS proxy pool.
-- [Reflector Pipeline](reflectors.md) — the UDP amplifier pool.
-- [Attack vectors overview](../attack-vectors/overview.md) — the raw
+- [Infrastructure overview](overview.md). The three managed pools.
+- [Proxy Pipeline](proxies.md). The HTTP and SOCKS proxy pool.
+- [Reflector Pipeline](reflectors.md). The UDP amplifier pool.
+- [Attack vectors overview](../attack-vectors/overview.md). The raw
   vectors and spoofed amplification.

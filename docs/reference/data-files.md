@@ -362,6 +362,6 @@ kill switch is a global control, not per-machine data. See the
 
 ## Related pages
 
-- [CLI Flags](cli-flags.md) — the flags that set the store paths.
-- [Configuration](../user-guide/configuration.md) — how the files map to config keys.
-- [User Guide Overview](../user-guide/overview.md) — the whole user guide.
+- [CLI Flags](cli-flags.md). The flags that set the store paths.
+- [Configuration](../user-guide/configuration.md). How the files map to config keys.
+- [User Guide Overview](../user-guide/overview.md). The whole user guide.

@@ -102,7 +102,7 @@ all of them.
 
 ## Related pages
 
-- [SLO Mode](slo.md) — closed-loop rate control that drives the same buckets.
-- [Checkpoint and Resume](checkpoint.md) — how bucket state survives a stop.
-- [Controls and Observability](overview.md) — the whole control section.
-- [Configuration](../user-guide/configuration.md) — config files and keys.
+- [SLO Mode](slo.md). Closed-loop rate control that drives the same buckets.
+- [Checkpoint and Resume](checkpoint.md). How bucket state survives a stop.
+- [Controls and Observability](overview.md). The whole control section.
+- [Configuration](../user-guide/configuration.md). Config files and keys.

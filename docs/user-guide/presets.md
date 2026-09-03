@@ -104,5 +104,5 @@ is missing. Your changes persist in the store.
 
 ## Next steps
 
-- [Configuration](configuration.md) — config files and keys.
-- [Web Dashboard](dashboard.md) — plan a run in the browser.
+- [Configuration](configuration.md). Config files and keys.
+- [Web Dashboard](dashboard.md). Plan a run in the browser.

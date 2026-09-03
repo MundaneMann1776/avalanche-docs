@@ -89,8 +89,8 @@ a label when its delta is zero.
 
 ## Related pages
 
-- [Controls and Observability](overview.md) — the whole observability
+- [Controls and Observability](overview.md). The whole observability
   section.
-- [Checkpoint and Resume](checkpoint.md) — another way to read run state.
-- [Installation](../getting-started/installation.md) — how to install the
+- [Checkpoint and Resume](checkpoint.md). Another way to read run state.
+- [Installation](../getting-started/installation.md). How to install the
   `metrics` extra.

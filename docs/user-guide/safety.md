@@ -78,5 +78,5 @@ it with the permission record. See [Engagements and Reports]
 
 ## Next steps
 
-- [Canary and Kill Switch](canary-killswitch.md) — how the controls work.
-- [Quick Start](../getting-started/quickstart.md) — your first runs.
+- [Canary and Kill Switch](canary-killswitch.md). How the controls work.
+- [Quick Start](../getting-started/quickstart.md). Your first runs.

@@ -106,6 +106,6 @@ See [Reconnaissance](../reconnaissance/overview.md) and
 
 ## Next steps
 
-- [Command-Line Interface](cli.md) — the flags in detail.
-- [Web Dashboard](dashboard.md) — the browser interface.
-- [Safety and Authorized Use](safety.md) — read before a real run.
+- [Command-Line Interface](cli.md). The flags in detail.
+- [Web Dashboard](dashboard.md). The browser interface.
+- [Safety and Authorized Use](safety.md). Read before a real run.

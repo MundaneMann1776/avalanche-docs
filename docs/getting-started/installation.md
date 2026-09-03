@@ -82,5 +82,5 @@ avalanche
 
 ## Next steps
 
-- [Quick Start](quickstart.md) — run your first checks.
-- [System Requirements](requirements.md) — privileges and libraries.
+- [Quick Start](quickstart.md). Run your first checks.
+- [System Requirements](requirements.md). Privileges and libraries.

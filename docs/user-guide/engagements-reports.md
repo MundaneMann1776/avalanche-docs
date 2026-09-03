@@ -87,5 +87,5 @@ avalanche -t target.example --no-record-engagement
 
 ## Next steps
 
-- [Web Dashboard](dashboard.md) — run and view engagements in the browser.
-- [Campaigns](../reconnaissance/campaigns.md) — run multi-target sweeps.
+- [Web Dashboard](dashboard.md). Run and view engagements in the browser.
+- [Campaigns](../reconnaissance/campaigns.md). Run multi-target sweeps.

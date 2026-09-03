@@ -221,8 +221,8 @@ test.
 
 ## Related pages
 
-- [Infrastructure overview](overview.md) — the three managed pools.
-- [Proxy Pipeline](proxies.md) — the HTTP and SOCKS proxy pool.
-- [Spoof Sources](spoof-sources.md) — spoofed source ranges.
-- [Attack vectors overview](../attack-vectors/overview.md) — the
+- [Infrastructure overview](overview.md). The three managed pools.
+- [Proxy Pipeline](proxies.md). The HTTP and SOCKS proxy pool.
+- [Spoof Sources](spoof-sources.md). Spoofed source ranges.
+- [Attack vectors overview](../attack-vectors/overview.md). The
   amplification attack types.

@@ -170,10 +170,10 @@ export carries the provenance and the dates that the dataset stores.
 
 ## Related pages
 
-- [Campaigns](campaigns.md) — merge discovered subdomains into a target
+- [Campaigns](campaigns.md). Merge discovered subdomains into a target
   group.
-- [Endpoint Discovery](endpoints.md) — seed a crawl from the discovered
+- [Endpoint Discovery](endpoints.md). Seed a crawl from the discovered
   hosts.
-- [Origin IP Finder](origin-finder.md) — reuse the dataset for origin
+- [Origin IP Finder](origin-finder.md). Reuse the dataset for origin
   candidates.
-- [Reconnaissance Overview](overview.md) — how the recon tools fit together.
+- [Reconnaissance Overview](overview.md). How the recon tools fit together.

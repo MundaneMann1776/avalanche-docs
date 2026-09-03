@@ -29,7 +29,7 @@ The map is grounded in the real directory listing and in `docs/API_OVERVIEW.md` 
 | `waf_bypass/` | Independent catalog of WAF bypass methods | `models.py`, `store.py`, `seeds.py`, `apply.py`, `flare.py`, `tspd.py` |
 | `utils.py` | Shared logger, user-agent pool, kill switch, and helpers | single module |
 
-## `core/` — the engine
+## The core package
 
 `core/` is the engine. It has no user interface and no attack logic of its own.
 
@@ -49,7 +49,7 @@ The map is grounded in the real directory listing and in `docs/API_OVERVIEW.md` 
 
 The `LocalLoadTester` orchestrates the run. It consumes a typed `AttackConfig`, runs pre-flight checks, and starts one vector per enabled entry. See [Engine Pipeline](engine.md).
 
-## `vectors/` — the attack modules
+## The vectors package
 
 `vectors/` holds the engine modules that send traffic. The term "vector" means one attack engine module in this documentation.
 
@@ -62,7 +62,7 @@ The package follows a small hierarchy.
 
 Each concrete module has one class and one job. `http_flood.py` has `AdvancedHTTPFlood`, `udp.py` has `UDPStorm` and `UDPAmplification`, and `http_flow.py` has the `HTTPFlowPlayer`. See [Vector Architecture](vectors.md) and the [vector overview](../attack-vectors/overview.md).
 
-## `distributed/` — controller and agent
+## The distributed package
 
 `distributed/` runs the same engine from more than one machine.
 
@@ -72,11 +72,11 @@ Each concrete module has one class and one job. `http_flood.py` has `AdvancedHTT
 
 The controller falls back to a local `LocalLoadTester` when no agent connects.
 
-## `presets/` — profiles
+## The presets package
 
 `presets/` supplies five built-in profiles: `quick-health`, `cdn-bypass`, `brute-force`, `stealth`, and `api-stress`. The seeds live in `seeds.py`. Users manage their own profiles through `~/.avalanche/presets.json`.
 
-## `ui/` — interfaces
+## The ui package
 
 `ui/` is the only layer that touches the user.
 
@@ -91,7 +91,7 @@ The controller falls back to a local `LocalLoadTester` when no agent connects.
 
 The `frontend/` directory holds a Vue 3 application. It is built with Vite and TypeScript. The compiled output lives in `ui/web/dist/` and is served by `ui/web_dashboard.py`. End users do not need Node.js. Frontend developers rebuild the bundle from `frontend/` and commit the output.
 
-## `reporting/` — engagements and reports
+## The reporting package
 
 `reporting/` records runs and renders reports.
 

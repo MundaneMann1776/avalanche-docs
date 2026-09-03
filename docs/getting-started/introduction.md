@@ -58,6 +58,6 @@ Read the [Safety page](../user-guide/safety.md) before your first real run.
 
 ## Next steps
 
-- [Quick Start](quickstart.md) — run your first check in minutes.
-- [Installation](installation.md) — install or update Avalanche.
-- [System Requirements](requirements.md) — what the tool needs.
+- [Quick Start](quickstart.md). Run your first check in minutes.
+- [Installation](installation.md). Install or update Avalanche.
+- [System Requirements](requirements.md). What the tool needs.

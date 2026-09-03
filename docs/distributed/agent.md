@@ -120,7 +120,7 @@ keeps only supported vectors in the slice it sends back.
 
 ## Related pages
 
-- [Distributed Mode](overview.md) — the fleet model.
-- [Controller](controller.md) — the listener the agent joins.
-- [Capacity Benchmark](benchmark.md) — how capacity is measured.
-- [Modes of Operation](../user-guide/modes.md) — the `--mode` flag in context.
+- [Distributed Mode](overview.md). The fleet model.
+- [Controller](controller.md). The listener the agent joins.
+- [Capacity Benchmark](benchmark.md). How capacity is measured.
+- [Modes of Operation](../user-guide/modes.md). The `--mode` flag in context.

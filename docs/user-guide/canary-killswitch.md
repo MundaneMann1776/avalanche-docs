@@ -37,8 +37,8 @@ dashboard. SLO mode uses the same verdict to drive the load. See
 
 The canary has two main settings:
 
-- `runtime.canary_path` — the path the canary requests. Default `/`.
-- `runtime.canary_interval` — the interval between probes in seconds.
+- `runtime.canary_path`. It sets the path the canary requests. Default `/`.
+- `runtime.canary_interval`. It sets the interval between probes in seconds.
   Default 10.
 
 CLI flags:
@@ -76,6 +76,6 @@ early enough to respect the target and the engagement window.
 
 ## Next steps
 
-- [Safety and Authorized Use](safety.md) — the rules of use.
-- [SLO Mode](../controls/slo.md) — the closed-loop ramp that uses the
+- [Safety and Authorized Use](safety.md). The rules of use.
+- [SLO Mode](../controls/slo.md). The closed-loop ramp that uses the
   canary verdict.

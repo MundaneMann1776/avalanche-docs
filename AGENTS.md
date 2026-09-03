@@ -1,7 +1,7 @@
-# AGENTS.md — Avalanche Docs
+# AGENTS.md. Documentation rules for agents
 
 This file is for any agent that works on this documentation site. Read it
-before you change any page. It is the companion to `MAINTAINING.md`.
+before you change any page. It is the companion to `docs/user-guide/maintaining.md`.
 
 ## Source of truth
 
@@ -9,12 +9,12 @@ This site documents the Avalanche toolkit. The source code lives in the
 private repository `MundaneMann1776/Avalanche`. This docs repository is
 public. Never copy source code into this repository.
 
-The documentation must reflect the code at a specific revision. The file
-`docs/.vitepress/config.mts` does not hold that revision. The review stamp
-below does. Update it every time you sync the docs to a new code revision.
+The documentation must reflect the code at a specific revision. The review
+stamp below holds that revision. Update it every time you sync the docs to
+a new code revision.
 
 Current review stamp: code revision `50df495`, version 3.1.0, docs
-reference revision 1, reviewed 2026-09-03.
+reference revision 2, reviewed 2026-09-03.
 
 ## Accuracy rules
 
@@ -39,6 +39,10 @@ reference revision 1, reviewed 2026-09-03.
 - Write in ASD-STE100 Simplified Technical English combined with the
   Microsoft Style Guide. Short sentences, active voice, present tense, US
   spelling, sentence-case headings.
+- Never use the em dash character (U+2014) in any page, heading, code
+  comment, or commit message. Use a period, a colon, or two sentences
+  instead. This rule applies to you and to every agent you spawn. Enforce
+  it.
 - Use the exact product terms: "vector", "attack type", "run",
   "engagement", "canary", "kill switch", "egress".
 - Include the authorized-use sentence on every page that describes running

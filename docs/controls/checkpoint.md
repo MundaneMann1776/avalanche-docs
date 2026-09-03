@@ -107,9 +107,9 @@ runtime:
 
 ## Related pages
 
-- [Rate Limiting and the Resource Governor](governor.md) — the token bucket
+- [Rate Limiting and the Resource Governor](governor.md). The token bucket
   state that resumes.
-- [Metrics](metrics.md) — another way to read run state.
-- [Controls and Observability](overview.md) — the whole observability
+- [Metrics](metrics.md). Another way to read run state.
+- [Controls and Observability](overview.md). The whole observability
   section.
-- [Configuration](../user-guide/configuration.md) — the config file format.
+- [Configuration](../user-guide/configuration.md). The config file format.

@@ -36,10 +36,11 @@ Follow these steps after a code change that affects the docs:
    trust the code repository's own prose docs over the code.
 3. Update the affected pages. Use the exact flag names, config keys, and
    defaults from the code.
-4. Update the review stamp in `docs/AGENTS.md`. Put the new commit, the
-   version, and the date there.
-5. Check the attack-type counts in `docs/AGENTS.md`. Keep them in sync with
-   `frontend/src/data/attackTypes.ts` in the Avalanche repository.
+4. Update the review stamp in `AGENTS.md` at the repository root. Put the
+   new commit, the version, and the date there.
+5. Check the attack-type counts in `AGENTS.md` at the repository root. Keep
+   them in sync with `frontend/src/data/attackTypes.ts` in the Avalanche
+   repository.
 6. Build the site. Run `npm run docs:build`.
 7. Check that every link resolves. Run the link check in `MAINTAINING.md`
    of this page set, or scan the built site.

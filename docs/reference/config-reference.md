@@ -38,9 +38,9 @@ The top level of a config file holds the target and the main sections.
 | `port` | `80` | Target port. |
 | `scheme` | `auto` | Request scheme: `auto`, `http`, or `https`. `auto` means HTTPS on ports 443 and 8443. |
 | `duration` | `0` | Run length in seconds. `0` means run until stopped. |
-| `vectors` | — | Per-vector configuration. One key per vector. |
-| `limits` | — | Global caps enforced by the resource governor. |
-| `runtime` | — | Operational settings for the run. |
+| `vectors` | (section) | Per-vector configuration. One key per vector. |
+| `limits` | (section) | Global caps enforced by the resource governor. |
+| `runtime` | (section) | Operational settings for the run. |
 | `waf_bypass` | `null` | WAF bypass method id applied at launch. |
 | `cookie_file` | `null` | Captured-cookie file to replay. It falls back to `~/.avalanche/cookies.json`. |
 
@@ -453,6 +453,6 @@ runtime:
 
 ## Related pages
 
-- [Configuration](../user-guide/configuration.md) — how to write and load config files.
-- [CLI Flags](cli-flags.md) — the same settings as command-line flags.
-- [User Guide Overview](../user-guide/overview.md) — the whole user guide.
+- [Configuration](../user-guide/configuration.md). How to write and load config files.
+- [CLI Flags](cli-flags.md). The same settings as command-line flags.
+- [User Guide Overview](../user-guide/overview.md). The whole user guide.

@@ -118,6 +118,6 @@ load split from them. See [Controller](controller.md).
 
 ## Related pages
 
-- [Distributed Mode](overview.md) — the fleet model.
-- [Agent](agent.md) — how the agent runs the benchmark.
-- [Controller](controller.md) — how the results slice the load.
+- [Distributed Mode](overview.md). The fleet model.
+- [Agent](agent.md). How the agent runs the benchmark.
+- [Controller](controller.md). How the results slice the load.

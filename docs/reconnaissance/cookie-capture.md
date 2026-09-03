@@ -202,8 +202,8 @@ avalanche -t example.com --http 200 --solver-mode headless --warm-clearance --wa
 
 ## Related pages
 
-- [Campaigns](campaigns.md) — sweep every target for cookies.
-- [Endpoint Discovery](endpoints.md) — find the paths the run will use.
-- [Reconnaissance Overview](overview.md) — how cookie capture feeds runs.
-- [Infrastructure Overview](../infrastructure/overview.md) — the proxy pool
+- [Campaigns](campaigns.md). Sweep every target for cookies.
+- [Endpoint Discovery](endpoints.md). Find the paths the run will use.
+- [Reconnaissance Overview](overview.md). How cookie capture feeds runs.
+- [Infrastructure Overview](../infrastructure/overview.md). The proxy pool
   that warm-up operates on.

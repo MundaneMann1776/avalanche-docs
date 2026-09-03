@@ -427,6 +427,6 @@ These flags control the health probe and the closed-loop SLO mode.
 
 ## Related pages
 
-- [Command-Line Interface](../user-guide/cli.md) — how to build a run in one line.
-- [Configuration Reference](config-reference.md) — the same settings as config keys.
-- [User Guide Overview](../user-guide/overview.md) — the whole user guide.
+- [Command-Line Interface](../user-guide/cli.md). How to build a run in one line.
+- [Configuration Reference](config-reference.md). The same settings as config keys.
+- [User Guide Overview](../user-guide/overview.md). The whole user guide.

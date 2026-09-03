@@ -96,8 +96,8 @@ the block rate delta, the winner, and the recommendation.
 
 ## Related pages
 
-- [Controls and Observability](overview.md) — the whole observability
+- [Controls and Observability](overview.md). The whole observability
   section.
-- [Configuration](../user-guide/configuration.md) — how to write the two
+- [Configuration](../user-guide/configuration.md). How to write the two
   config files.
-- [User Guide Overview](../user-guide/overview.md) — plan a full assessment.
+- [User Guide Overview](../user-guide/overview.md). Plan a full assessment.

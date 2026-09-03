@@ -97,10 +97,10 @@ closes.
 
 ## Related pages
 
-- [Controller](controller.md) — the listener that slices and aggregates.
-- [Agent](agent.md) — the machine that runs a load slice.
-- [Capacity Benchmark](benchmark.md) — how agents measure their own capacity.
-- [Modes of Operation](../user-guide/modes.md) — other ways to run Avalanche.
-- [User Guide Overview](../user-guide/overview.md) — plan a full assessment.
-- [Architecture Overview](../architecture/overview.md) — how the engine fits
+- [Controller](controller.md). The listener that slices and aggregates.
+- [Agent](agent.md). The machine that runs a load slice.
+- [Capacity Benchmark](benchmark.md). How agents measure their own capacity.
+- [Modes of Operation](../user-guide/modes.md). Other ways to run Avalanche.
+- [User Guide Overview](../user-guide/overview.md). Plan a full assessment.
+- [Architecture Overview](../architecture/overview.md). How the engine fits
   together.

@@ -171,9 +171,9 @@ the dated sources.
 
 ## Related pages
 
-- [Subdomain Discovery](subdomains.md) — the dataset the finder reads for
+- [Subdomain Discovery](subdomains.md). The dataset the finder reads for
   candidates.
-- [Cookie Capture](cookie-capture.md) — pass the edge when you act on the
+- [Cookie Capture](cookie-capture.md). Pass the edge when you act on the
   results.
-- [Reconnaissance Overview](overview.md) — report-only versus run-feeding
+- [Reconnaissance Overview](overview.md). Report-only versus run-feeding
   recon.

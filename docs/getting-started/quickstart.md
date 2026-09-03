@@ -81,7 +81,7 @@ Remove the file before your next run.
 
 ## Next steps
 
-- [Modes of Operation](../user-guide/modes.md) — every way to run the tool.
-- [Web Dashboard](../user-guide/dashboard.md) — plan and watch runs.
-- [Safety and Authorized Use](../user-guide/safety.md) — read this before a
+- [Modes of Operation](../user-guide/modes.md). Every way to run the tool.
+- [Web Dashboard](../user-guide/dashboard.md). Plan and watch runs.
+- [Safety and Authorized Use](../user-guide/safety.md). Read this before a
   real run.

@@ -88,5 +88,5 @@ For scripted runs, use the command line. For sequences, use a playbook. See
 
 ## Next steps
 
-- [Command-Line Interface](cli.md) — run from a terminal.
-- [Engagements and Reports](engagements-reports.md) — record what you ran.
+- [Command-Line Interface](cli.md). Run from a terminal.
+- [Engagements and Reports](engagements-reports.md). Record what you ran.

@@ -70,7 +70,7 @@ phase sequence until it completes or you stop the run.
 
 ## Next steps
 
-- [Configuration](configuration.md) — the config file format.
-- [Presets](presets.md) — the built-in profiles.
-- [Distributed Mode](../distributed/overview.md) — scale a run across
+- [Configuration](configuration.md). The config file format.
+- [Presets](presets.md). The built-in profiles.
+- [Distributed Mode](../distributed/overview.md). Scale a run across
   machines.

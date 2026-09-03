@@ -123,8 +123,8 @@ knee.
 
 ## Related pages
 
-- [Rate Limiting and the Resource Governor](governor.md) — the bucket the
+- [Rate Limiting and the Resource Governor](governor.md). The bucket the
   search drives.
-- [Controls and Observability](overview.md) — the whole control section.
-- [Canary and Kill Switch](../user-guide/canary-killswitch.md) — the canary
+- [Controls and Observability](overview.md). The whole control section.
+- [Canary and Kill Switch](../user-guide/canary-killswitch.md). The canary
   verdict in detail.

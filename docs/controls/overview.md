@@ -63,7 +63,7 @@ file stops a run immediately. Read the safety rules in the
 - [Metrics](metrics.md)
 - [Checkpoint and Resume](checkpoint.md)
 - [A/B Comparison](comparison.md)
-- [Architecture Overview](../architecture/overview.md) — where these
+- [Architecture Overview](../architecture/overview.md). Where these
   components live in the engine.
-- [Attack Vectors Overview](../attack-vectors/overview.md) — what the
+- [Attack Vectors Overview](../attack-vectors/overview.md). What the
   vectors do under load.

@@ -114,9 +114,9 @@ share change as a target signal.
 
 ## Related pages
 
-- [Endpoint discovery](../user-guide/configuration.md) — where the endpoint
+- [Endpoint discovery](../user-guide/configuration.md). Where the endpoint
   list comes from.
-- [Canary and Kill Switch](../user-guide/canary-killswitch.md) — the health
+- [Canary and Kill Switch](../user-guide/canary-killswitch.md). The health
   verdict that measures the origin.
-- [Controls and Observability](overview.md) — the whole control section.
-- [Metrics](metrics.md) — how outcome counters feed the exporter.
+- [Controls and Observability](overview.md). The whole control section.
+- [Metrics](metrics.md). How outcome counters feed the exporter.

@@ -60,12 +60,12 @@ a challenge. The pages in this section explain each step.
 
 ## Related pages
 
-- [Subdomain Discovery](subdomains.md) — find hostnames below a domain.
-- [Origin IP Finder](origin-finder.md) — find the backend IP behind the edge.
-- [Endpoint Discovery](endpoints.md) — find live paths for the HTTP flood.
-- [Campaigns](campaigns.md) — group and manage target hostnames.
-- [Cookie Capture](cookie-capture.md) — capture WAF cookies for replay.
-- [Infrastructure Overview](../infrastructure/overview.md) — proxy pools,
+- [Subdomain Discovery](subdomains.md). Find hostnames below a domain.
+- [Origin IP Finder](origin-finder.md). Find the backend IP behind the edge.
+- [Endpoint Discovery](endpoints.md). Find live paths for the HTTP flood.
+- [Campaigns](campaigns.md). Group and manage target hostnames.
+- [Cookie Capture](cookie-capture.md). Capture WAF cookies for replay.
+- [Infrastructure Overview](../infrastructure/overview.md). Proxy pools,
   reflectors, and spoof sources.
-- [User Guide Overview](../user-guide/overview.md) — the wider workflow.
-- [Safety and Authorized Use](../user-guide/safety.md) — the rules of use.
+- [User Guide Overview](../user-guide/overview.md). The wider workflow.
+- [Safety and Authorized Use](../user-guide/safety.md). The rules of use.

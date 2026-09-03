@@ -54,10 +54,10 @@ environment variable.
 
 ## Related pages
 
-- [Proxy Pipeline](proxies.md) — build and use the proxy pool.
-- [Reflector Pipeline](reflectors.md) — build and use the amplifier pool.
-- [Spoof Sources](spoof-sources.md) — manage ranges for spoofed sources.
-- [Reconnaissance overview](../reconnaissance/overview.md) — find targets
+- [Proxy Pipeline](proxies.md). Build and use the proxy pool.
+- [Reflector Pipeline](reflectors.md). Build and use the amplifier pool.
+- [Spoof Sources](spoof-sources.md). Manage ranges for spoofed sources.
+- [Reconnaissance overview](../reconnaissance/overview.md). Find targets
   and endpoints.
-- [Attack vectors overview](../attack-vectors/overview.md) — see the attack
+- [Attack vectors overview](../attack-vectors/overview.md). See the attack
   types that consume these pools.

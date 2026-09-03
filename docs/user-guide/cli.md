@@ -122,5 +122,5 @@ See [Reconnaissance](../reconnaissance/overview.md) and
 
 ## Next steps
 
-- [Configuration](configuration.md) — put the same settings in a file.
-- [CLI Flags reference](../reference/cli-flags.md) — every flag.
+- [Configuration](configuration.md). Put the same settings in a file.
+- [CLI Flags reference](../reference/cli-flags.md). Every flag.

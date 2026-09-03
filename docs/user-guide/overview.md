@@ -10,14 +10,14 @@ assessments. Read it before your first real run.
 
 The guide covers the tools you use to build and run a test:
 
-- [Modes of Operation](modes.md) — the ways you can start Avalanche.
-- [Command-Line Interface](cli.md) — flags that define a run in one line.
-- [Web Dashboard](dashboard.md) — the browser interface.
-- [Presets](presets.md) — saved attack profiles.
-- [Configuration](configuration.md) — config files, YAML and JSON.
-- [Playbooks](playbooks.md) — sequenced attack phases.
-- [Canary and Kill Switch](canary-killswitch.md) — the safety controls.
-- [Engagements and Reports](engagements-reports.md) — record runs and export
+- [Modes of Operation](modes.md). The ways you can start Avalanche.
+- [Command-Line Interface](cli.md). Flags that define a run in one line.
+- [Web Dashboard](dashboard.md). The browser interface.
+- [Presets](presets.md). Saved attack profiles.
+- [Configuration](configuration.md). Config files, YAML and JSON.
+- [Playbooks](playbooks.md). Sequenced attack phases.
+- [Canary and Kill Switch](canary-killswitch.md). The safety controls.
+- [Engagements and Reports](engagements-reports.md). Record runs and export
   results.
 
 The [Safety page](safety.md) states the rules of use. It comes first in
@@ -39,7 +39,7 @@ A typical assessment follows these steps:
 
 ## Where to go next
 
-- [Modes of Operation](modes.md) — choose how to run.
-- [Web Dashboard](dashboard.md) — start from the browser.
-- [Attack Vectors](../attack-vectors/overview.md) — understand what each
+- [Modes of Operation](modes.md). Choose how to run.
+- [Web Dashboard](dashboard.md). Start from the browser.
+- [Attack Vectors](../attack-vectors/overview.md). Understand what each
   vector does.

@@ -157,9 +157,9 @@ Targets with no runs still appear with empty run fields. The route is
 
 ## Related pages
 
-- [Subdomain Discovery](subdomains.md) — the source for a campaign merge.
-- [Endpoint Discovery](endpoints.md) — what an endpoint sweep runs.
-- [Cookie Capture](cookie-capture.md) — what a cookie sweep runs.
-- [Engagements and Reports](../user-guide/engagements-reports.md) — how
+- [Subdomain Discovery](subdomains.md). The source for a campaign merge.
+- [Endpoint Discovery](endpoints.md). What an endpoint sweep runs.
+- [Cookie Capture](cookie-capture.md). What a cookie sweep runs.
+- [Engagements and Reports](../user-guide/engagements-reports.md). How
   campaign runs are recorded.
-- [Reconnaissance Overview](overview.md) — where campaigns fit.
+- [Reconnaissance Overview](overview.md). Where campaigns fit.

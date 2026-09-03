@@ -159,8 +159,8 @@ weights move.
 
 ## Related pages
 
-- [Reconnaissance Overview](overview.md) — where discovery sits in the flow.
-- [Adaptive Targeting](../controls/adaptive-targeting.md) — the load moves
+- [Reconnaissance Overview](overview.md). Where discovery sits in the flow.
+- [Adaptive Targeting](../controls/adaptive-targeting.md). The load moves
   based on per-endpoint health.
-- [Campaigns](campaigns.md) — sweep every target for endpoints.
-- [Subdomain Discovery](subdomains.md) — seed the crawl with verified hosts.
+- [Campaigns](campaigns.md). Sweep every target for endpoints.
+- [Subdomain Discovery](subdomains.md). Seed the crawl with verified hosts.

@@ -68,5 +68,5 @@ captured cookies, settings, proxy and reflector pools, and reports.
 
 ## Next steps
 
-- [Installation](installation.md) — install the tool.
-- [Modes of Operation](../user-guide/modes.md) — choose how to run.
+- [Installation](installation.md). Install the tool.
+- [Modes of Operation](../user-guide/modes.md). Choose how to run.

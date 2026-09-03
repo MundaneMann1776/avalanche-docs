@@ -246,8 +246,8 @@ against a system that is not in scope.
 
 ## Related pages
 
-- [Infrastructure overview](overview.md) — the three managed pools.
-- [Reflector Pipeline](reflectors.md) — the UDP amplifier pool.
-- [Spoof Sources](spoof-sources.md) — spoofed source ranges.
-- [Attack vectors overview](../attack-vectors/overview.md) — the HTTP
+- [Infrastructure overview](overview.md). The three managed pools.
+- [Reflector Pipeline](reflectors.md). The UDP amplifier pool.
+- [Spoof Sources](spoof-sources.md). Spoofed source ranges.
+- [Attack vectors overview](../attack-vectors/overview.md). The HTTP
   attacks that consume this pool.

@@ -126,7 +126,7 @@ shuts down.
 
 ## Related pages
 
-- [Distributed Mode](overview.md) — the fleet model and when to use it.
-- [Agent](agent.md) — the other side of the connection.
-- [Capacity Benchmark](benchmark.md) — what each agent measures.
-- [Modes of Operation](../user-guide/modes.md) — the `--mode` flag in context.
+- [Distributed Mode](overview.md). The fleet model and when to use it.
+- [Agent](agent.md). The other side of the connection.
+- [Capacity Benchmark](benchmark.md). What each agent measures.
+- [Modes of Operation](../user-guide/modes.md). The `--mode` flag in context.

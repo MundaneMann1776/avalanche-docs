@@ -136,7 +136,7 @@ All paths share the same typed models, so the behavior is identical.
 
 ## Next steps
 
-- [Configuration Reference](../reference/config-reference.md) — every key
+- [Configuration Reference](../reference/config-reference.md). Every key
   and default.
-- [Presets](presets.md) — saved profiles that fill the same config.
-- [Playbooks](playbooks.md) — sequence configs over time.
+- [Presets](presets.md). Saved profiles that fill the same config.
+- [Playbooks](playbooks.md). Sequence configs over time.
