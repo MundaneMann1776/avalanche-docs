@@ -1,23 +1,24 @@
 ---
 title: "HTTP/2 attacks (vector: http2)"
-description: How the http2 vector runs twelve frame-abuse attacks, including Rapid Reset and Continuation Flood.
+description: How the http2 vector runs four HTTP/2 frame-abuse modes: Rapid Reset, Continuation Flood, Stream Multiplex, and Connection Hold.
 ---
 
 # HTTP/2 attacks
 
-The `http2` vector runs twelve HTTP/2 frame-abuse attacks over TCP. Each
-attack has its own dashboard row, from HTTP/2 Rapid Reset through HPACK
-Bomb. The vector works at OSI layer 7. Use Avalanche only against systems
-you own or have written permission to test.
+The `http2` vector runs four HTTP/2 frame-abuse modes over TCP. Each mode
+maps to a separate dashboard attack type. The vector works at OSI layer 7,
+the application layer. Use Avalanche only against systems you own or have
+written permission to test.
 
 The class `Http2Flood` in `vectors/http2.py` runs one connection per worker
-on its own thread. The `mode` key selects the frame abuse method.
+on its own thread. The `mode` config key selects the frame abuse method.
 
 ## When to use
 
 Use the vector against servers, proxies, and load balancers that speak
-HTTP/2. The twelve modes test how a stack handles malformed, excessive, or
-churned frame sequences.
+HTTP/2. The four modes test how a stack handles rapid stream churn, endless
+header blocks, stream multiplexing pressure, and long-held incomplete
+requests.
 
 Good targets include:
 
@@ -25,85 +26,146 @@ Good targets include:
 - A load balancer that terminates HTTP/2.
 - A reverse proxy with a configurable HTTP/2 timeout.
 
-Many modes probe known HTTP/2 weaknesses. Rapid Reset is CVE-2023-44487.
-Continuation Flood is CVE-2023-45288. Several others map to the 2019
-HTTP/2 "request smuggling" research family (CVE-2019-9512 through
-CVE-2019-9518). Validate the effect against a stack you control before you
+Rapid Reset targets CVE-2023-44487. Continuation Flood targets
+CVE-2023-45288. Validate the effect against a stack you control before you
 draw conclusions.
 
 ## How it works
 
-Each worker thread opens one TCP connection and negotiates HTTP/2. On
-HTTPS the socket is wrapped in TLS with the `h2` ALPN protocol. The vector
-requires the peer to select `h2` over ALPN; otherwise the connection is
-closed. On cleartext HTTP the vector first sends the h2c prior-knowledge
-preface. If the peer answers with HTTP/1.1, the worker falls back to the
-HTTP/1.1 Upgrade handshake (RFC 9113 section 3.2).
+Each worker thread opens one TCP connection and negotiates HTTP/2. On HTTPS
+the socket is wrapped in TLS with the `h2` ALPN protocol. The vector
+requires the peer to select `h2` over ALPN. If the peer does not, the
+connection closes. On cleartext HTTP the vector sends the h2c
+prior-knowledge preface first. If the peer answers with HTTP/1.1, the
+worker falls back to the HTTP/1.1 Upgrade handshake (RFC 9113 section 3.2).
 
-Rapid Reset and Trailers drive the `h2` client state machine directly.
+Rapid Reset and multiplex drive the `h2` client state machine directly.
 Rapid Reset cycles HEADERS plus RST_STREAM frames on fresh streams.
-Trailers sends HEADERS, an empty DATA frame, and a trailer HEADERS with
-END_STREAM. Reset Flood also drives the state machine, but it opens each
-stream without END_STREAM and cancels it before the request completes.
+Multiplex opens N concurrent streams and drains ended ones to make room for
+new requests.
 
-The other modes send frame sequences that `h2` either validates away or
-cannot emit, so they serialize raw frames with `hyperframe`. Raw-frame
-modes send one pre-built byte string per cycle and drain inbound data on a
-schedule. When the peer closes the connection, the worker reconnects after
-a short delay.
+Continuation and connection hold use raw frame serialization from
+`hyperframe`. Continuation sends one HEADERS frame without END_HEADERS,
+then endless CONTINUATION frames. Connection hold sends incomplete HEADERS
+and keeps the stream alive with periodic WINDOW_UPDATE frames.
 
-Cleartext and encrypted behavior differ in one more way. HTTPS needs the
-`h2` ALPN protocol from TLS. Cleartext h2c needs no TLS at all. Both the
-`h2` connection layer and `hyperframe` come from the `h2` optional package.
-
-The mode list maps one to one to the twelve dashboard attack rows:
-
-- `rapid_reset`: HEADERS + RST_STREAM cycles.
-- `continuation`: one endless header block on stream 1.
-- `settings`: repeated SETTINGS frames with rotating wire-legal values.
-- `window_update`: flow-control increments that rotate up to the 2^31-1
-  boundary and past it.
-- `priority`: PRIORITY churn on stream 1 to rework the peer priority tree.
-- `ping`: unacknowledged PING frames.
-- `reset_flood`: fresh streams canceled before the request completes.
-- `empty_frames`: zero-length DATA frames on a held-open stream.
-- `zero_length_headers`: header blocks with many zero-length values.
-- `goaway`: client GOAWAY frames interleaved with fresh streams.
-- `trailers`: every request ends with trailer headers after an empty DATA
-  frame.
-- `hpack_bomb`: seed the peer HPACK table once, then reference it with
-  five-byte requests.
+When the peer closes the connection, the worker reconnects after a short
+delay. Each reconnect delay includes optional timing jitter.
 
 ## Attack types
 
-| Attack type | Layer | Notes |
+| Attack type | Mode | Notes |
 |---|---|---|
-| HTTP/2 Rapid Reset | L7 | `mode=rapid_reset` (default). HEADERS plus RST_STREAM cycles. |
-| HTTP/2 Continuation Flood | L7 | `mode=continuation`. Endless header block; size from `continuation_frame_size`. |
-| HTTP/2 Settings Flood | L7 | `mode=settings`. Repeated SETTINGS frames with rotating values. |
-| HTTP/2 Window Update Flood | L7 | `mode=window_update`. Flow-control increments, including the boundary and zero. |
-| HTTP/2 Priority Churn | L7 | `mode=priority`. PRIORITY frames on stream 1. |
-| HTTP/2 Ping Flood | L7 | `mode=ping`. Unacknowledged PING frames. |
-| HTTP/2 Reset Flood | L7 | `mode=reset_flood`. Cancel fresh streams before the request completes. |
-| HTTP/2 Empty Frames | L7 | `mode=empty_frames`. Zero-length DATA frames. |
-| HTTP/2 Zero-Length Headers | L7 | `mode=zero_length_headers`. Requests with many empty header values. |
-| HTTP/2 GOAWAY Churn | L7 | `mode=goaway`. Client GOAWAY frames between fresh streams. |
-| HTTP/2 Trailers Abuse | L7 | `mode=trailers`. Trailer headers after an empty DATA frame. |
-| HTTP/2 HPACK Bomb | L7 | `mode=hpack_bomb`. One seed request, then cheap references to the table. |
+| HTTP/2 Rapid Reset | `rapid_reset` | HEADERS plus RST_STREAM cycles. Default mode. |
+| HTTP/2 Continuation Flood | `continuation` | Endless header block. Frame size from `continuation_frame_size`. |
+| HTTP/2 Stream Multiplex | `multiplex` | N concurrent streams per connection. Count from `max_concurrent_streams`. |
+| HTTP/2 Connection Hold | `connection_hold` | Incomplete HEADERS held open with WINDOW_UPDATE. Duration from `hold_seconds`. |
+
+## Modes
+
+### Rapid Reset
+
+CVE-2023-44487. This mode opens a stream with HEADERS and END_STREAM, then
+immediately cancels it with RST_STREAM using error code 8 (cancel). The
+server must process the HEADERS and then handle the reset. Repeating this
+cycle at high speed forces the server to allocate and deallocate stream
+state continuously.
+
+Each iteration sends one HEADERS frame and one RST_STREAM frame. The `h2`
+library builds both frames. Every 100 iterations the worker drains inbound
+data to prevent TCP backpressure from stalling the connection.
+
+Default settings: 20 workers, no timing jitter.
+
+```bash
+avalanche -t example.test -p 443 --scheme https --http2 20
+```
+
+Use this mode to test how a server handles rapid stream creation and
+cancellation. It targets the CVE-2023-44487 weakness in HTTP/2
+implementations.
+
+### Continuation Flood
+
+CVE-2023-45288. This mode sends one HEADERS frame without the END_HEADERS
+flag, then streams endless CONTINUATION frames. The server must buffer the
+entire header block until it sees END_HEADERS. The buffer grows without
+bound.
+
+The HEADERS frame carries a valid HPACK-encoded request. The CONTINUATION
+frames carry filler bytes (`0x82` repeated). Each frame has the size that
+`continuation_frame_size` sets. The mode uses raw `hyperframe` serialization
+because the `h2` library cannot emit an incomplete header block.
+
+Every 100 frames the worker drains inbound data. The worker sends frames
+continuously until the peer closes the connection or the run stops.
+
+Default settings: 20 workers, 4096 bytes per CONTINUATION frame, no timing
+jitter.
+
+```bash
+avalanche -t example.test -p 443 --scheme https --http2 20 --http2-mode continuation
+```
+
+Use this mode to test how a server handles unbounded header block buffering.
+It targets the CVE-2023-45288 weakness.
+
+### Stream Multiplex
+
+This mode opens multiple concurrent streams on one connection. Each stream
+carries a complete GET request with HEADERS and END_STREAM. The worker
+keeps opening new streams until it reaches the `max_concurrent_streams`
+limit. When a stream ends, the worker opens a replacement.
+
+The `h2` library manages stream state. The worker reads inbound data with a
+short timeout to detect ended streams. It tracks open stream IDs and
+removes them when the server signals StreamEnded.
+
+Default settings: 20 workers, 10 concurrent streams per connection, no
+timing jitter.
+
+```bash
+avalanche -t example.test -p 443 --scheme https --http2 20 --http2-mode multiplex
+```
+
+Use this mode to test how a server handles sustained multiplexing pressure.
+It fills the server's concurrent stream quota on each connection.
+
+### Connection Hold
+
+This mode sends an incomplete HEADERS frame (without END_STREAM) and holds
+the connection open. The worker sends periodic WINDOW_UPDATE frames to
+prevent the server from timing out the connection due to flow control
+inactivity.
+
+The worker increments the flow control window by 1 byte every second. It
+continues for `hold_seconds` or until the peer closes the connection. The
+server must keep the stream and connection state alive for the full
+duration.
+
+Default settings: 20 workers, 60 seconds hold time, no timing jitter.
+
+```bash
+avalanche -t example.test -p 443 --scheme https --http2 20 --http2-mode connection_hold
+```
+
+Use this mode to test how a server handles long-lived incomplete streams.
+It targets connection slot exhaustion.
 
 ## Configuration
 
 The typed model is `Http2VectorConfig` in `core/config.py`. The flat v1
 defaults live in `core/vector_defaults.py` under the `http2` key.
 
-| Key | Default | Meaning |
-|---|---|---|
-| `enabled` | `False` | Start the vector in this run. |
-| `workers` | `20` | Number of worker threads, one connection each. Range 1 to 1000. |
-| `mode` | `rapid_reset` | Frame-abuse method. One of the twelve mode names above. |
-| `continuation_frame_size` | `4096` | Filler bytes per CONTINUATION frame. Range 16 to 16384. |
-| `browser_tls` | `True` | Build the TLS context from the browser TLS profile when HTTPS. |
-| `timing_jitter_ms` | `0` | Randomize the reconnect delay, up to this many milliseconds. |
+| Key | Default | Range | Meaning |
+|---|---|---|---|
+| `enabled` | `False` | | Start the vector in this run. |
+| `workers` | `20` | 1 to 1000 | Number of worker threads. Each owns one connection. |
+| `mode` | `rapid_reset` | | Frame abuse method: `rapid_reset`, `continuation`, `multiplex`, or `connection_hold`. |
+| `continuation_frame_size` | `4096` | 16 to 16384 | Filler bytes per CONTINUATION frame. Used by `continuation` mode only. |
+| `max_concurrent_streams` | `10` | 1 to 100 | Concurrent streams per connection. Used by `multiplex` mode only. |
+| `hold_seconds` | `60` | 1 to 3600 | How long to hold a connection open. Used by `connection_hold` mode only. |
+| `timing_jitter_ms` | `0` | 0 to 5000 | Randomize the reconnect delay, up to this many milliseconds. |
 
 ## Command-line flags
 
@@ -112,22 +174,23 @@ defaults live in `core/vector_defaults.py` under the `http2` key.
 | `--http2 N` | Enable the vector and set the worker count. Default 20. |
 | `--http2-mode MODE` | Select the attack mode. Default `rapid_reset`. |
 
-The `--http2-mode` choices are `rapid_reset`, `continuation`, `settings`,
-`window_update`, `priority`, `ping`, `reset_flood`, `empty_frames`,
-`zero_length_headers`, `goaway`, `trailers`, and `hpack_bomb`. The
-dashboard exposes each mode as a separate attack type under the vector.
+The `--http2-mode` choices are `rapid_reset`, `continuation`, `multiplex`,
+and `connection_hold`. The dashboard exposes each mode as a separate attack
+type under the vector.
 
 ## Modifiers
 
-The dashboard exposes one modifier for the http2 attack rows.
+The dashboard exposes modifiers per attack type.
 
-| Modifier | Config key | Effect |
-|---|---|---|
-| Timing Jitter | `timing_jitter_ms` | Randomize the delay between reconnects. |
+| Modifier | Config key | Applies to | Status |
+|---|---|---|---|
+| Timing Jitter | `timing_jitter_ms` | All four modes | AVAILABLE |
+| Max Concurrent Streams | `max_concurrent_streams` | `multiplex` | ENGINE_READY |
+| Hold Seconds | `hold_seconds` | `connection_hold` | ENGINE_READY |
 
 ::: warning
 Timing Jitter paces reconnects only. It does not pace frames inside a
-connection. The modifier matrix records this caveat.
+connection.
 :::
 
 The matrix hides TLS Randomize for this vector. The http2 engine does not
@@ -139,8 +202,8 @@ The vector needs the optional `h2` package. The `h2` install also brings
 `hyperframe` and `hpack`, which the raw-frame modes import.
 
 ::: warning
-Without `h2` the vector logs a warning and skips the run. The engine does
-not fail loudly. Install the extra before you enable the vector:
+Without `h2` the vector logs a warning and skips the run. Install the
+extra before you enable the vector:
 :::
 
 ```bash
@@ -150,7 +213,7 @@ uv sync --extra h2
 Cleartext h2c needs no TLS. HTTPS mode needs the standard `ssl` module and
 works without root.
 
-## Example
+## Examples
 
 Run HTTP/2 Rapid Reset against an HTTPS target:
 
@@ -164,10 +227,16 @@ Run a Continuation Flood with larger frames:
 avalanche -t example.test -p 443 --scheme https --http2 20 --http2-mode continuation
 ```
 
-Run an HPACK Bomb against a cleartext h2c listener:
+Run Stream Multiplex with 50 concurrent streams per connection:
 
 ```bash
-avalanche -t example.test -p 80 --scheme http --http2 20 --http2-mode hpack_bomb
+avalanche -t example.test -p 443 --scheme https --http2 20 --http2-mode multiplex
+```
+
+Run Connection Hold for 120 seconds against a cleartext h2c listener:
+
+```bash
+avalanche -t example.test -p 80 --scheme http --http2 20 --http2-mode connection_hold
 ```
 
 ## Related pages
