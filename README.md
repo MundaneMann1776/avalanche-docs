@@ -1,6 +1,6 @@
 # Avalanche Docs
 
-The documentation site for the Avalanche availability-testing toolkit.
+The documentation site for the Avalanche DDoS testing toolkit.
 
 This repository builds a static documentation website with VitePress. The
 content is Markdown under `docs/`. The site is published to GitHub Pages.
@@ -25,53 +25,6 @@ The site covers:
 - Developer guide. How to add vectors, presets, modifiers, and config
   fields.
 - Reference. CLI flags, configuration keys, and data files.
-
-## Writing style
-
-All content follows ASD-STE100 Simplified Technical English combined with
-the Microsoft Style Guide. See `WRITING_GUIDE.md` for the rules. The rules
-are a hard requirement from the project owner.
-
-## Accuracy
-
-Documentation reflects the code in the Avalanche repository. Do not
-document features that do not exist. When the code changes, update the
-affected pages in the same change.
-
-## Local development
-
-```bash
-npm install
-npm run docs:dev
-```
-
-The dev server runs at http://localhost:5173 by default.
-
-## Build
-
-```bash
-npm run docs:build
-```
-
-The static output is written to `docs/.vitepress/dist`.
-
-## Preview a build
-
-```bash
-npm run docs:preview
-```
-
-## Publish to GitHub Pages
-
-The repository ships a GitHub Actions workflow in
-`.github/workflows/deploy.yml`. It builds the site and publishes it to
-GitHub Pages on every push to `main`.
-
-To enable Pages:
-
-1. Push this repository to GitHub.
-2. Open **Settings > Pages**.
-3. Set **Source** to **GitHub Actions**.
 
 ## Related
 
